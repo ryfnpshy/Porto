@@ -218,7 +218,7 @@ export const portfolioData = {
     message: "Saya aktif mencari peluang magang atau posisi entry-level di berbagai bidang IT — baik itu software development, data analysis, IT support, atau system analysis. Saya sangat terbuka untuk berbagai jenis proyek dan tantangan, karena saya percaya setiap pengalaman adalah kesempatan untuk belajar dan berkembang. Mari berdiskusi bagaimana saya dapat berkontribusi dan tumbuh bersama tim Anda!",
     email: "m.rayfanpashya00@gmail.com",
     phone: "0813-1607-8308",
-    linkedin: "www.linkedin.com/in/rayfan-pashya",
+    linkedin: "https://www.linkedin.com/in/rayfan-pashya/",
     github: "https://github.com/ryfnpshy",
     location: "Kampung bali, Kalideres, Jakarta Barat",
   }
