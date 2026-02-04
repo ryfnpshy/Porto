@@ -1,0 +1,48 @@
+---
+import { portfolioData } from "../data/portfolio";
+---
+
+<section id="education" class="section-padding">
+    <div class="container mx-auto px-6 lg:px-8">
+        <div class="mx-auto max-w-4xl">
+            <div class="mb-12">
+                <h2
+                    class="mb-4 text-3xl font-bold sm:text-4xl font-heading text-foreground"
+                >
+                    {portfolioData.education.title}
+                </h2>
+            </div>
+
+            <div class="space-y-6">
+                {
+                    portfolioData.education.items.map((edu) => (
+                        <div class="rounded-lg border border-border bg-card p-6 lg:p-8">
+                            <div class="mb-6">
+                                <h3 class="text-2xl font-bold text-foreground mb-1">
+                                    {edu.degree}
+                                </h3>
+                                <p class="text-accent font-medium">
+                                    {edu.institution}
+                                </p>
+                                <p class="text-sm text-muted-foreground mt-1">
+                                    {edu.period}
+                                </p>
+                            </div>
+
+                            <div class="space-y-2">
+                                {edu.details.map((detail) => (
+                                    <div class="flex items-start gap-2">
+                                        <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
+                                        <span class="text-sm text-foreground/90">
+                                            {detail}
+                                        </span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</section>

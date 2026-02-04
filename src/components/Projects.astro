@@ -1,0 +1,284 @@
+---
+import { portfolioData } from "../data/portfolio";
+---
+
+<section id="projects" class="section-padding bg-muted/30">
+    <div class="container mx-auto px-6 lg:px-8">
+        <div class="mx-auto max-w-6xl">
+            <div class="mb-12 text-center">
+                <h2
+                    class="mb-4 text-3xl font-bold sm:text-4xl font-heading text-foreground"
+                >
+                    {portfolioData.projects.title}
+                </h2>
+                <p class="text-muted-foreground text-lg">
+                    {portfolioData.projects.subtitle}
+                </p>
+            </div>
+
+            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {
+                    portfolioData.projects.items.map((project, index) => (
+                        <div class="group rounded-xl border border-border bg-card overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                            <div
+                                class="relative aspect-video overflow-hidden bg-muted cursor-pointer"
+                                data-project-index={index}
+                                onclick="openLightbox(this)"
+                            >
+                                <img
+                                    src={project.image}
+                                    alt={project.title}
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                />
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <div class="text-white text-sm font-medium flex items-center gap-2">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="h-5 w-5"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                        >
+                                            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
+                                        </svg>
+                                        Lihat Detail
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-foreground mb-2 group-hover:text-accent transition-colors">
+                                    {project.title}
+                                </h3>
+                                <p class="text-muted-foreground text-sm mb-4 line-clamp-2">
+                                    {project.description}
+                                </p>
+
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    {project.tags.map((tag) => (
+                                        <span class="px-3 py-1 text-xs font-medium rounded-full bg-accent/10 text-accent border border-accent/20">
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div
+        id="lightbox-modal"
+        class="fixed inset-0 bg-black/90 z-50 hidden items-center justify-center p-4"
+        onclick="closeLightboxOnBackdrop(event)"
+    >
+        <button
+            onclick="closeLightbox()"
+            class="absolute top-4 right-4 text-white hover:text-accent transition-colors z-10"
+            aria-label="Close"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-8 w-8"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+            >
+                <path d="M18 6L6 18M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <button
+            onclick="previousImage()"
+            class="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-accent transition-colors z-10 bg-black/50 rounded-full p-3 hover:bg-black/70"
+            aria-label="Previous"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+            >
+                <path d="M15 18l-6-6 6-6"></path>
+            </svg>
+        </button>
+
+        <button
+            onclick="nextImage()"
+            class="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-accent transition-colors z-10 bg-black/50 rounded-full p-3 hover:bg-black/70"
+            aria-label="Next"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+            >
+                <path d="M9 18l6-6-6-6"></path>
+            </svg>
+        </button>
+
+        <div class="max-w-5xl w-full">
+            <div class="relative">
+                <img
+                    id="lightbox-image"
+                    src=""
+                    alt=""
+                    class="w-full h-auto max-h-[80vh] object-contain rounded-lg"
+                />
+
+                <div class="mt-4 text-center">
+                    <h3
+                        id="lightbox-title"
+                        class="text-white text-2xl font-bold mb-2"
+                    >
+                    </h3>
+                    <p
+                        id="lightbox-description"
+                        class="text-white/80 text-sm mb-4"
+                    >
+                    </p>
+                    <div
+                        id="lightbox-tags"
+                        class="flex flex-wrap gap-2 justify-center mb-4"
+                    >
+                    </div>
+                    <p id="lightbox-counter" class="text-white/60 text-sm"></p>
+                </div>
+
+                <!-- Thumbnail Navigation -->
+                <div
+                    id="lightbox-thumbnails"
+                    class="flex gap-2 justify-center mt-4 overflow-x-auto pb-2"
+                >
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script define:vars={{ projects: portfolioData.projects.items }}>
+    let currentProjectIndex = 0;
+    let currentImageIndex = 0;
+    let currentProject = null;
+
+    window.openLightbox = function (element) {
+        currentProjectIndex = parseInt(element.dataset.projectIndex);
+        currentProject = projects[currentProjectIndex];
+        currentImageIndex = 0;
+
+        const modal = document.getElementById("lightbox-modal");
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        document.body.style.overflow = "hidden";
+
+        updateLightboxContent();
+    };
+
+    window.closeLightbox = function () {
+        const modal = document.getElementById("lightbox-modal");
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        document.body.style.overflow = "";
+    };
+
+    window.closeLightboxOnBackdrop = function (event) {
+        if (event.target.id === "lightbox-modal") {
+            closeLightbox();
+        }
+    };
+
+    window.nextImage = function () {
+        if (currentProject && currentProject.images) {
+            currentImageIndex =
+                (currentImageIndex + 1) % currentProject.images.length;
+            updateLightboxContent();
+        }
+    };
+
+    window.previousImage = function () {
+        if (currentProject && currentProject.images) {
+            currentImageIndex =
+                (currentImageIndex - 1 + currentProject.images.length) %
+                currentProject.images.length;
+            updateLightboxContent();
+        }
+    };
+
+    function updateLightboxContent() {
+        if (!currentProject) return;
+
+        const image = document.getElementById("lightbox-image");
+        const title = document.getElementById("lightbox-title");
+        const description = document.getElementById("lightbox-description");
+        const tags = document.getElementById("lightbox-tags");
+        const counter = document.getElementById("lightbox-counter");
+        const thumbnails = document.getElementById("lightbox-thumbnails");
+
+        image.src = currentProject.images[currentImageIndex];
+        image.alt = currentProject.title;
+        title.textContent = currentProject.title;
+        description.textContent = currentProject.description;
+        counter.textContent = `${currentImageIndex + 1} / ${currentProject.images.length}`;
+
+        // Update tags
+        tags.innerHTML = currentProject.tags
+            .map(
+                (tag) =>
+                    `<span class="px-3 py-1 text-xs font-medium rounded-full bg-accent/20 text-white border border-accent/40">${tag}</span>`,
+            )
+            .join("");
+
+        // Update thumbnails
+        thumbnails.innerHTML = currentProject.images
+            .map(
+                (img, idx) =>
+                    `<img 
+                src="${img}" 
+                alt="Thumbnail ${idx + 1}"
+                class="w-16 h-16 object-cover rounded cursor-pointer border-2 ${idx === currentImageIndex ? "border-accent" : "border-transparent"} hover:border-accent/50 transition-all"
+                onclick="currentImageIndex = ${idx}; updateLightboxContent();"
+            />`,
+            )
+            .join("");
+    }
+
+    // Keyboard navigation
+    document.addEventListener("keydown", (e) => {
+        const modal = document.getElementById("lightbox-modal");
+        if (!modal.classList.contains("hidden")) {
+            if (e.key === "Escape") closeLightbox();
+            if (e.key === "ArrowRight") nextImage();
+            if (e.key === "ArrowLeft") previousImage();
+        }
+    });
+</script>
+
+<style>
+    #lightbox-thumbnails::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    #lightbox-thumbnails::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
+    }
+
+    #lightbox-thumbnails::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 3px;
+    }
+
+    #lightbox-thumbnails::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.5);
+    }
+</style>

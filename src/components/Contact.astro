@@ -1,0 +1,261 @@
+---
+import { portfolioData } from "../data/portfolio";
+---
+
+<section id="contact" class="section-padding bg-muted/30">
+    <div class="container mx-auto px-6 lg:px-8">
+        <div class="mx-auto max-w-3xl">
+            <div class="mb-12 text-center">
+                <h2
+                    class="mb-4 text-3xl font-bold sm:text-4xl font-heading text-foreground"
+                >
+                    {portfolioData.contact.title}
+                </h2>
+                <p class="text-lg text-foreground/90 leading-relaxed">
+                    {portfolioData.contact.message}
+                </p>
+            </div>
+
+            <div class="grid gap-8 md:grid-cols-2">
+                <!-- Contact Information -->
+                <div class="space-y-6">
+                    <div class="rounded-lg border border-border bg-card p-6">
+                        <h3 class="mb-4 text-lg font-bold text-foreground">
+                            Contact Information
+                        </h3>
+
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3">
+                                <div class="mt-1 rounded-md bg-accent/10 p-2">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="18"
+                                        height="18"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="text-accent"
+                                    >
+                                        <rect
+                                            width="20"
+                                            height="16"
+                                            x="2"
+                                            y="4"
+                                            rx="2"></rect>
+                                        <path
+                                            d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"
+                                        ></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p
+                                        class="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-1"
+                                    >
+                                        Email
+                                    </p>
+                                    <a
+                                        href={`mailto:${portfolioData.contact.email}`}
+                                        class="text-sm font-medium text-foreground hover:text-accent transition-colors"
+                                    >
+                                        {portfolioData.contact.email}
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <div class="mt-1 rounded-md bg-accent/10 p-2">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="18"
+                                        height="18"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="text-accent"
+                                    >
+                                        <path
+                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                                        ></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p
+                                        class="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-1"
+                                    >
+                                        Phone
+                                    </p>
+                                    <a
+                                        href={`tel:${portfolioData.contact.phone}`}
+                                        class="text-sm font-medium text-foreground hover:text-accent transition-colors"
+                                    >
+                                        {portfolioData.contact.phone}
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <div class="mt-1 rounded-md bg-accent/10 p-2">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="18"
+                                        height="18"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="text-accent"
+                                    >
+                                        <path
+                                            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                                        ></path>
+                                        <rect width="4" height="12" x="2" y="9"
+                                        ></rect>
+                                        <circle cx="4" cy="4" r="2"></circle>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p
+                                        class="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-1"
+                                    >
+                                        LinkedIn
+                                    </p>
+                                    <a
+                                        href={`https://${portfolioData.contact.linkedin}`}
+                                        target="_blank"
+                                        class="text-sm font-medium text-foreground hover:text-accent transition-colors"
+                                    >
+                                        /in/rayfan-pashya
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <div class="mt-1 rounded-md bg-accent/10 p-2">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="18"
+                                        height="18"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="text-accent"
+                                    >
+                                        <path
+                                            d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"
+                                        ></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p
+                                        class="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-1"
+                                    >
+                                        Location
+                                    </p>
+                                    <p
+                                        class="text-sm font-medium text-foreground"
+                                    >
+                                        {portfolioData.contact.location}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="rounded-lg border border-border bg-card p-6">
+                    <h3 class="mb-4 text-lg font-bold text-foreground">
+                        Send a Message
+                    </h3>
+
+                    {/*
+                      NOTE:
+                      - Form ini menggunakan Formspree untuk mengirim email ke inbox Anda.
+                      - Ganti `YOUR_FORMSPREE_FORM_ID` dengan Form ID milik Anda dari Formspree.
+                      - Email akan dikirim ke alamat yang Anda daftarkan di Formspree (isi dengan `m.rayfanpashya00@gmail.com`).
+                    */}
+                    <form
+                        id="contact-form"
+                        class="space-y-4"
+                        method="POST"
+                        action="https://formspree.io/f/xwvqgjby"
+                    >
+                        <div>
+                            <label
+                                for="name"
+                                class="mb-1.5 block text-sm font-medium text-foreground"
+                                >Name</label
+                            >
+                            <input
+                                id="name"
+                                type="text"
+                                name="name"
+                                placeholder="Your name"
+                                required
+                                class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring transition-all"
+                            />
+                        </div>
+
+                        <div>
+                            <label
+                                for="email"
+                                class="mb-1.5 block text-sm font-medium text-foreground"
+                                >Email</label
+                            >
+                            <input
+                                id="email"
+                                type="email"
+                                name="email"
+                                placeholder="your.email@example.com"
+                                required
+                                class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring transition-all"
+                            />
+                        </div>
+
+                        <div>
+                            <label
+                                for="message"
+                                class="mb-1.5 block text-sm font-medium text-foreground"
+                                >Message</label
+                            >
+                            <textarea
+                                id="message"
+                                name="message"
+                                placeholder="Your message..."
+                                rows="4"
+                                required
+                                class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring transition-all resize-none"
+                            ></textarea>
+                        </div>
+
+                        {/* Optional: subject khusus */}
+                        <input
+                            type="hidden"
+                            name="_subject"
+                            value="New message from portfolio contact form"
+                        />
+
+                        <button
+                            type="submit"
+                            class="w-full rounded-md bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+                        >
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

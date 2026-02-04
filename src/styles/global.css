@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Soft Neutral Palette - HR Friendly */
+    --background: 42 10% 98%;
+    /* #FAFAF9 - Soft off-white */
+    --foreground: 24 10% 12%;
+    /* #1C1917 - Warm dark gray */
+
+    --card: 0 0% 100%;
+    /* Pure white for cards */
+    --card-foreground: 24 10% 12%;
+
+    --primary: 215 20% 35%;
+    /* #475569 - Muted slate blue */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 24 6% 90%;
+    /* #E7E5E4 - Very light warm gray */
+    --secondary-foreground: 24 10% 12%;
+
+    --muted: 24 6% 95%;
+    /* #F5F5F4 - Warm stone */
+    --muted-foreground: 25 5% 45%;
+    /* #78716C - Medium gray */
+
+    --accent: 173 58% 39%;
+    /* #14B8A6 - Soft teal (desaturated) */
+    --accent-foreground: 0 0% 100%;
+
+    --border: 24 6% 90%;
+    /* #E7E5E4 - Light border */
+    --input: 24 6% 90%;
+    --ring: 215 20% 35%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@theme {
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    line-height: 1.75;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading font-bold tracking-tight;
+    line-height: 1.2;
+  }
+
+  p {
+    line-height: 1.8;
+  }
+}
+
+/* Layout Utilities */
+.content-width {
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-padding {
+  @apply py-16 lg:py-24;
+}
+
+.section-spacing {
+  @apply mb-12 lg:mb-16;
+}
+
+/* Subtle Animations - Minimal */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+/* Custom Scrollbar - Subtle */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/20 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/30;
+}

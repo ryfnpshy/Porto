@@ -1,0 +1,41 @@
+---
+import { portfolioData } from "../data/portfolio";
+---
+
+<section id="competencies" class="section-padding">
+    <div class="container mx-auto px-6 lg:px-8">
+        <div class="mx-auto max-w-4xl">
+            <div class="mb-12 text-center">
+                <h2
+                    class="mb-4 text-3xl font-bold sm:text-4xl font-heading text-foreground"
+                >
+                    {portfolioData.competencies.title}
+                </h2>
+                <p class="text-muted-foreground max-w-2xl mx-auto">
+                    A combination of hands-on technical experience and academic
+                    training in information systems.
+                </p>
+            </div>
+
+            <div class="grid gap-8 md:grid-cols-3">
+                {
+                    portfolioData.competencies.categories.map((category) => (
+                        <div class="rounded-lg border border-border bg-card p-6">
+                            <h3 class="mb-4 text-lg font-bold text-foreground">
+                                {category.name}
+                            </h3>
+                            <ul class="space-y-3">
+                                {category.items.map((item) => (
+                                    <li class="flex items-start gap-2 text-sm text-muted-foreground">
+                                        <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
+                                        <span>{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,77 @@
+---
+import { portfolioData } from "../data/portfolio";
+---
+
+<section id="about" class="section-padding bg-muted/30">
+    <div class="container px-4 md:px-6">
+        <div class="grid gap-12 lg:grid-cols-2 items-center">
+            <div class="relative group">
+                <div
+                    class="relative overflow-hidden rounded-2xl border border-border aspect-square bg-slate-900 flex items-center justify-center"
+                >
+                    <!-- Icon/Visual instead of placeholder -->
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-32 h-32 text-primary/40 group-hover:scale-110 transition-transform duration-500"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"
+                        ></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                        <path d="M7 8l2 2 4-4"></path>
+                    </svg>
+                </div>
+                <div
+                    class="absolute -bottom-6 -right-6 h-32 w-32 rounded-2xl bg-primary/10 border border-primary/20 -z-10 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform"
+                >
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <div>
+                    <h2
+                        class="text-3xl font-bold sm:text-4xl mb-4 font-heading"
+                    >
+                        {portfolioData.summary.title}
+                    </h2>
+                    <div class="h-1 w-20 bg-primary rounded-full mb-8"></div>
+                </div>
+
+                <div
+                    class="space-y-4 text-muted-foreground leading-relaxed text-lg"
+                >
+                    {
+                        portfolioData.summary.paragraphs.map((paragraph) => (
+                            <p>{paragraph}</p>
+                        ))
+                    }
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 pt-6">
+                    <div
+                        class="p-4 rounded-xl border border-border bg-background"
+                    >
+                        <span class="text-3xl font-bold text-primary">SI</span>
+                        <p class="text-sm text-muted-foreground">
+                            Information Systems Major
+                        </p>
+                    </div>
+                    <div
+                        class="p-4 rounded-xl border border-border bg-background"
+                    >
+                        <span class="text-3xl font-bold text-primary">80+</span>
+                        <p class="text-sm text-muted-foreground">
+                            Systems Repaired
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
